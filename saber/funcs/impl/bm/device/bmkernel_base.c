@@ -26,22 +26,6 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
     int input_c = conv_param.input_c;
     int input_h = conv_param.input_h;
     int input_w = conv_param.input_w;
-    int groups = conv_param.groups;
-    int output_c = conv_param.output_c;
-    int kh = conv_param.kh;
-    int kw = conv_param.kw;
-    int dh = conv_param.dh;
-    int dw = conv_param.dw;
-    int pad_h = conv_param.pad_h;
-    int pad_w = conv_param.pad_w;
-    int stride_h = conv_param.stride_h;
-    int stride_w = conv_param.stride_w;
-    int using_bias = conv_param.using_bias;
-    int result_add = conv_param.result_add;
-    int icsecs = conv_param.icsecs;
-    int ocsecs = conv_param.ocsecs;
-    int nsecs = conv_param.nsecs;
-    int hsecs = conv_param.hsecs;
 
     BM_ATOMIC_RESULT bm_res = BM_ATOMIC_SUCCESS;
     const int start_npu_idx = 0;
