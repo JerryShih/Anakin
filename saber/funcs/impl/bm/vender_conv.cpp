@@ -262,10 +262,10 @@ SaberStatus VenderConv2D<BM, AK_FLOAT>::\
       secs_info.hsecs
     };
 
-    bm_handle_t handle = NULL;
-    bmkernel_init(&handle);
+    //bm_handle_t handle = NULL;
+    //bmkernel_init(&handle);
 
-    bm_status_t bm_stat = bmkernel_launch(handle, "/usr/local/include/bm/bmkernel_bin.bin");
+    bm_status_t bm_stat = bmkernel_launch(_handle, "/usr/local/include/bm/bmkernel_bin.bin");
     CHECK_EQ(BM_SUCCESS, bm_stat) << "bmkernel_launch failed.";
 
     LOG(INFO)<<"BM Conv starts...";
@@ -275,12 +275,12 @@ SaberStatus VenderConv2D<BM, AK_FLOAT>::\
     /* Send arguments. */
     enum BmOpType op = CONV;
     bmkernel_api_base api = { op, reinterpret_cast<void *>(&bm_conv_param) };
-    BM_CHECK(bmkernel_send_args(handle, reinterpret_cast<void *>(&api), sizeof(api)));
+    BM_CHECK(bmkernel_send_args(_handle, reinterpret_cast<void *>(&api), sizeof(api)));
 
     LOG(INFO)<<"BM Conv ends...";
     print_tensor(*outputs[0]);
 
-    bmkernel_deinit(handle);
+    bmkernel_deinit(_handle);
 
     return SaberSuccess;
 }
