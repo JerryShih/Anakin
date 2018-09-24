@@ -58,7 +58,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
 
     bm_res = bm_atomic_arithmetic_tensor_add_tensor(
                                 start_npu_idx, 
-                                src_local_offset,
+                                src_offset_local,
                                 dst_local_offset,
                                 dst_local_offset,
                                 input_n, input_c, input_h, input_w,
