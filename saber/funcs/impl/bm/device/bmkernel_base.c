@@ -44,7 +44,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
     int global_stride_h = input_w;
 
     bm_res = bm_atomic_tensor_stride_move(
-                                start_npu_idx, src_local_offset,
+                                start_npu_idx, src_offset_local,
                                 ifmap_offset_global, input_n, input_c, input_h,
                                 input_w, local_stride_n, local_stride_c,
                                 local_stride_h, global_stride_n,
@@ -60,6 +60,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
                                 start_npu_idx, 
                                 src_local_offset,
                                 dst_local_offset,
+                                input_n, input_c, input_h, input_w,
                                 input_n, input_c, input_h, input_w,
                                 input_n, input_c, input_h, input_w,
                                 input_n, input_c, input_h, input_w);
