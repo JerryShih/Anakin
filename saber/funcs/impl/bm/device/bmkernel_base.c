@@ -1,6 +1,5 @@
 #include "bmkernel_base.h"
 #include "bm_config.h"
-#include "bmk_conv.c"
 #include <stdio.h>
 #include <stdio.h>
 #include "bm_common.h"
@@ -11,14 +10,7 @@
  *               op - Flag to determine the operation type.             
  */
 
-int bmkernel_func(void *args)
-{
-    bmkernel_api_base* param = (bmkernel_api_base *)args;
-    bm_api_conv_forward* api = (bm_api_conv_forward *)param->opParam;
-    return bm_conv_fwd(*api);
-}
-
-int bm_conv_fwd(bm_api_conv_forward conv_param)
+int bm_conv_fwd_test(bm_api_conv_forward conv_param)
 {
     // Unpack parameters
     u64 ifmap_offset_global = conv_param.src_offset_global;
@@ -303,4 +295,11 @@ int bm_conv_fwd(bm_api_conv_forward conv_param)
         return -1;
     }
     return 0;
+}
+
+int bmkernel_func(void *args)
+{
+    bmkernel_api_base* param = (bmkernel_api_base *)args;
+    bm_api_conv_forward* api = (bm_api_conv_forward *)param->opParam;
+    return bm_conv_fwd_test(*api);
 }
