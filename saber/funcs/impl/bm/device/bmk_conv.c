@@ -4,8 +4,8 @@
 int bm_conv_fwd(bm_api_conv_forward conv_param)
 {
     // Unpack parameters
-    u64 ifmap_offset_global = conv_param.ifmap_offset_global;
-    u64 ofmap_offset_global = conv_param.ofmap_offset_global;
+    u64 ifmap_offset_global = conv_param.src_offset_global;
+    u64 ofmap_offset_global = conv_param.dst_offset_global;
     u64 weight_offset_global = conv_param.weight_offset_global;
     u64 bias_offset_global = conv_param.bias_offset_global;
     int input_n = conv_param.input_n;
