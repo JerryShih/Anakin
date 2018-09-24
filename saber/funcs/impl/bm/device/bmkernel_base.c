@@ -50,9 +50,9 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
     int oc = output_c / groups;
     int ic_per_NPU = ceiling_func_shift(ic, NPU_SHIFT);
     int oc_per_NPU = ceiling_func_shift(oc, NPU_SHIFT);
-    u32 bias_offset_local = 0;
+    int bias_offset_local = 0;
     int bias_tensor_size = oc_per_NPU * FLOAT_SIZE;
-    u32 weight_offset_local = bias_offset_local + bias_tensor_size;
+    int weight_offset_local = bias_offset_local + bias_tensor_size;
     int weight_group_offset = oc * ic * kh * kw;
     int weight_tensor_size = ic * oc_per_NPU * kh * kw * FLOAT_SIZE;
     int weight_capacity = addr_EU_align(weight_tensor_size + bias_tensor_size);
@@ -101,7 +101,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
                 }
             }
             weight_capacity = max_icslice * oc_per_NPU * kh * kw * FLOAT_SIZE;
-            u32 ofmap_offset_local = addr_EU_align(weight_capacity + weight_offset_local);
+            int ofmap_offset_local = addr_EU_align(weight_capacity + weight_offset_local);
             int nend = 0;
             for (int nidx = 0; nidx < nsecs; nidx++){
                 int nstart = nend;
@@ -127,7 +127,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
                     int ifmap_tensor_size = sec_len_n * max_ic_per_NPU * ifmap_align_size;
                     int ofmap_align_size = get_neuron_csize_local(o_h, output_w);
                     int ofmap_tensor_size = sec_len_n * max_oc_per_NPU * ofmap_align_size;
-                    u32 ifmap_offset_local = ofmap_offset_local + ofmap_tensor_size;
+                    int ifmap_offset_local = ofmap_offset_local + ofmap_tensor_size;
                     int offset_local_end = ifmap_offset_local + ifmap_tensor_size;
                     if (offset_local_end > LOCAL_MEM_SIZE) {
                         printf("local memory not enough.\n");
