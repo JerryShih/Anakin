@@ -10,8 +10,8 @@ enum BmOpType {
 };
 
 typedef struct {
-    unsigned long long             ifmap_offset_global;
-    unsigned long long             ofmap_offset_global;
+    unsigned long long             src_offset_global;
+    unsigned long long             dst_offset_global;
     unsigned long long             weight_offset_global;
     unsigned long long             bias_offset_global;
     int                            input_n;   // note this is total input_n
