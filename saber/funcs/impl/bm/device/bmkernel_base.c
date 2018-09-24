@@ -60,6 +60,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
                                 start_npu_idx, 
                                 src_local_offset,
                                 dst_local_offset,
+                                dst_local_offset,
                                 input_n, input_c, input_h, input_w,
                                 input_n, input_c, input_h, input_w,
                                 input_n, input_c, input_h, input_w,
