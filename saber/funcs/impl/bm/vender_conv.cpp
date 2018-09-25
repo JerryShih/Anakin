@@ -275,12 +275,10 @@ SaberStatus VenderConv2D<BM, AK_FLOAT>::\
     /* Send arguments. */
     enum BmOpType op = CONV;
     bmkernel_api_base api = { op, reinterpret_cast<void *>(&bm_conv_param) };
-    //BM_CHECK(bmkernel_send_args(_handle, reinterpret_cast<void *>(&api), sizeof(api)));
+    BM_CHECK(bmkernel_send_args(_handle, reinterpret_cast<void *>(&api), sizeof(api)));
 
     LOG(INFO)<<"BM Conv ends...";
     print_tensor(*outputs[0]);
-
-    //bmkernel_deinit(_handle);
 
     return SaberSuccess;
 }
