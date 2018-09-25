@@ -77,7 +77,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
         return -1;
     }*/
 
-    bm_res = bm_atomic_wait_all_task_complete();
+    BM_ATOMIC_RESULT bm_res = bm_atomic_wait_all_task_complete();
     if (bm_res != BM_ATOMIC_SUCCESS) {
         printf("bm_atomic_wait_all_task_complete failed.\n");
         return -1;
