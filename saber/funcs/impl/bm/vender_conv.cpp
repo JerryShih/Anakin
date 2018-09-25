@@ -280,7 +280,7 @@ SaberStatus VenderConv2D<BM, AK_FLOAT>::\
     LOG(INFO)<<"BM Conv ends...";
     print_tensor(*outputs[0]);
 
-    bmkernel_deinit(_handle);
+    //bmkernel_deinit(_handle);
 
     return SaberSuccess;
 }
