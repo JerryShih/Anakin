@@ -115,7 +115,6 @@ if(USE_BM_PLACE)
         COMMENT "BM Kernel compilation..."
     )
     add_custom_target(ANAKIN ALL DEPENDS bm_kernel_tmp)
-    set(CMAKE_CXX_FLAGS "-lbmkernel-host -lbmlib-asic")
 endif()
 
 # add saber library to static
