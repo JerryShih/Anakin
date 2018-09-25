@@ -61,8 +61,8 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
                                 dst_local_offset,
                                 src_offset_local,
                                 input_n, input_c, input_h, input_w,
-                                input_n, input_c, input_h, input_w,
-                                input_n, input_c, input_h, input_w);
+                                local_stride_n, local_stride_c, local_stride_h, 0,
+                                local_stride_n, local_stride_c, local_stride_h, 0);
 
     if (bm_res != BM_ATOMIC_SUCCESS) {
         printf("bm_atomic_tensor_stride_move failed.\n");
