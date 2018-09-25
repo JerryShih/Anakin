@@ -39,9 +39,9 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
     int local_stride_n = c_per_npu_work * EU_NUM_ALIGN(input_h * input_w);
     int local_stride_c = EU_NUM_ALIGN(input_h * input_w);
     int local_stride_h = input_h;
-    int global_stride_n = input_c * input_h * input_w;
-    int global_stride_c = input_h * input_w;
-    int global_stride_h = input_w;
+    //int global_stride_n = input_c * input_h * input_w;
+    //int global_stride_c = input_h * input_w;
+    //int global_stride_h = input_w;
 
     bm_res = bm_atomic_tensor_compact_move(
                                 start_npu_idx, src_offset_local, ifmap_offset_global, 
