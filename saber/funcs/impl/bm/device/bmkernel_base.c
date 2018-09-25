@@ -19,7 +19,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
 {
     // Unpack parameters
     u64 ifmap_offset_global = conv_param.src_offset_global;
-    u64 ofmap_offset_global = conv_param.dst_offset_global;
+    //u64 ofmap_offset_global = conv_param.dst_offset_global;
     int input_n = conv_param.input_n;
     int input_c = conv_param.input_c;
     int input_h = conv_param.input_h;
@@ -33,8 +33,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
                 * c_per_npu_work * input_n;
 
     u32 src_offset_local = 0;
-    u32 dst_local_offset = EU_OFFSET_ALIGN(src_offset_local +
-                                             tensor_local_size);
+    //u32 dst_local_offset = EU_OFFSET_ALIGN(src_offset_local + tensor_local_size);
 
     int local_stride_n = c_per_npu_work * EU_NUM_ALIGN(input_h * input_w);
     int local_stride_c = EU_NUM_ALIGN(input_h * input_w);
