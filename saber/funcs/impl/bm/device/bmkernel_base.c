@@ -17,6 +17,19 @@
 
 int bm_conv_fwd_test(bm_api_conv_forward conv_param)
 {
+    const int start_npu_idx = 0;
+    int c_per_npu_work = (input_c - 1) / NPU_NUM + 1;
+    u32 src_offset_local = 0;
+    u64 ifmap_offset_global = conv_param.src_offset_global;
+    int input_n = conv_param.input_n;
+    int input_c = conv_param.input_c;
+    int input_h = conv_param.input_h;
+    int input_w = conv_param.input_w;
+    bm_atomic_tensor_compact_move(
+                                start_npu_idx, src_offset_local, ifmap_offset_global, 
+                                input_n, input_c, input_h, input_w, 
+                                DMA_G2L, false, false);
+
     // Unpack parameters
     /*u64 ifmap_offset_global = conv_param.src_offset_global;
     //u64 ofmap_offset_global = conv_param.dst_offset_global;
