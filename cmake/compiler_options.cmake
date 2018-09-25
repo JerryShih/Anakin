@@ -125,3 +125,8 @@ if(USE_CUDA)
     # set default nvidia gpu arch
     set(ANAKIN_ARCH_LIST "3.5;5.0;6.0;6.1")
 endif()
+
+if(USE_BM_PLACE)
+    anakin_add_compile_option(-lbmkernel-host)
+    anakin_add_compile_option(-lbmlib-asic)
+endif()
