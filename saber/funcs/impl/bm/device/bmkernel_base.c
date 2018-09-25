@@ -89,8 +89,8 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
 
 int bmkernel_func(void *args)
 {
-    bmkernel_api_base* param = (bmkernel_api_base *)args;
-    bm_api_conv_forward* api = (bm_api_conv_forward *)param->opParam;
+    //bmkernel_api_base* param = (bmkernel_api_base *)args;
+    //bm_api_conv_forward* api = (bm_api_conv_forward *)param->opParam;
     return 0;
     //return bm_conv_fwd_test(*api);
 }
