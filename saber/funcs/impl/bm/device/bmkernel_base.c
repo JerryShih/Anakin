@@ -39,14 +39,16 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
     int local_stride_n = c_per_npu_work * EU_NUM_ALIGN(input_h * input_w);
     int local_stride_c = EU_NUM_ALIGN(input_h * input_w);
     int local_stride_h = input_h;
-    //int global_stride_n = input_c * input_h * input_w;
-    //int global_stride_c = input_h * input_w;
-    //int global_stride_h = input_w;
+    int global_stride_n = input_c * input_h * input_w;
+    int global_stride_c = input_h * input_w;
+    int global_stride_h = input_w;
 
-    bm_res = bm_atomic_tensor_compact_move(
+    bm_res = bm_atomic_tensor_stride_move(
                                 start_npu_idx, src_offset_local, ifmap_offset_global, 
                                 input_n, input_c, input_h, input_w, 
-                                DMA_G2L, false, false);
+                                local_stride_n, local_stride_c, local_stride_h, 
+                                global_stride_n, global_stride_c, global_stride_h, 
+                                DMA_G2L, DMA_F32, false);
 
     if (bm_res != BM_ATOMIC_SUCCESS) {
         printf("bm_atomic_tensor_stride_move failed.\n");
@@ -66,10 +68,12 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
         return -1;
     }
 
-    bm_res = bm_atomic_tensor_compact_move(
+    bm_res = bm_atomic_tensor_stride_move(
                                 start_npu_idx, dst_local_offset, ofmap_offset_global, 
                                 input_n, input_c, input_h, input_w, 
-                                DMA_L2G, false, false);
+                                global_stride_n, global_stride_c, global_stride_h, 
+                                local_stride_n, local_stride_c, local_stride_h, 
+                                DMA_L2G, DMA_F32, false);
     if (bm_res != BM_ATOMIC_SUCCESS) {
         printf("bm_atomic_tensor_stride_move failed.\n");
         return -1;
