@@ -29,8 +29,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
     const int start_npu_idx = 0;
 
     int c_per_npu_work = (input_c - 1) / NPU_NUM + 1;
-    u32 tensor_local_size = EU_NUM_ALIGN(input_h * input_w) * sizeof(float)
-                * c_per_npu_work * input_n;
+    //u32 tensor_local_size = EU_NUM_ALIGN(input_h * input_w) * sizeof(float) * c_per_npu_work * input_n;
 
     u32 src_offset_local = 0;
     //u32 dst_local_offset = EU_OFFSET_ALIGN(src_offset_local + tensor_local_size);
