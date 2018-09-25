@@ -55,7 +55,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
         return -1;
     }
 
-    bm_res = bm_atomic_arithmetic_tensor_copy(
+    /*bm_res = bm_atomic_arithmetic_tensor_copy(
                                 start_npu_idx, 
                                 dst_local_offset,
                                 src_offset_local,
@@ -64,7 +64,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
                                 local_stride_n, local_stride_c, local_stride_h, 1);
 
     if (bm_res != BM_ATOMIC_SUCCESS) {
-        printf("bm_atomic_tensor_stride_move failed.\n");
+        printf("bm_atomic_arithmetic_tensor_copy failed.\n");
         return -1;
     }
 
@@ -77,7 +77,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
     if (bm_res != BM_ATOMIC_SUCCESS) {
         printf("bm_atomic_tensor_stride_move failed.\n");
         return -1;
-    }
+    }*/
 
     bm_res = bm_atomic_wait_all_task_complete();
     if (bm_res != BM_ATOMIC_SUCCESS) {
@@ -89,8 +89,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
 
 int bmkernel_func(void *args)
 {
-    //bmkernel_api_base* param = (bmkernel_api_base *)args;
-    //bm_api_conv_forward* api = (bm_api_conv_forward *)param->opParam;
-    return 0;
-    //return bm_conv_fwd_test(*api);
+    bmkernel_api_base* param = (bmkernel_api_base *)args;
+    bm_api_conv_forward* api = (bm_api_conv_forward *)param->opParam;
+    return bm_conv_fwd_test(*api);
 }
