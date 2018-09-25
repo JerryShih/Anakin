@@ -51,7 +51,7 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
     if (bm_res != BM_ATOMIC_SUCCESS) {
         printf("bm_atomic_tensor_stride_move failed.\n");
         return -1;
-    }
+    }*/
 
     /*bm_res = bm_atomic_arithmetic_tensor_copy(
                                 start_npu_idx, 
