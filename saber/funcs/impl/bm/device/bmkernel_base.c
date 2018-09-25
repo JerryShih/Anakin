@@ -18,7 +18,6 @@
 int bm_conv_fwd_test(bm_api_conv_forward conv_param)
 {
     const int start_npu_idx = 0;
-    int c_per_npu_work = (input_c - 1) / NPU_NUM + 1;
     u32 src_offset_local = 0;
     u64 ifmap_offset_global = conv_param.src_offset_global;
     int input_n = conv_param.input_n;
