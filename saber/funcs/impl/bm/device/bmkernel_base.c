@@ -24,10 +24,11 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
     int input_c = conv_param.input_c;
     int input_h = conv_param.input_h;
     int input_w = conv_param.input_w;
-    bm_atomic_tensor_compact_move(
+    BM_ATOMIC_RESULT bm_res = bm_atomic_tensor_compact_move(
                                 start_npu_idx, src_offset_local, ifmap_offset_global, 
                                 input_n, input_c, input_h, input_w, 
                                 DMA_G2L, false, false);
+    printf("bm_atomic_tensor_stride_move： "+bm_res);
 
     // Unpack parameters
     /*u64 ifmap_offset_global = conv_param.src_offset_global;
