@@ -1,7 +1,6 @@
 
 #include "saber/funcs/impl/bm/vender_conv.h"
 #include "bmlib_runtime.h"
-#include "bm_common.h"
 #include "tensor_op.h"
 #include <string.h>
 #include <stdio.h>

@@ -1,7 +1,6 @@
 #include "bmkernel_base.h"
 #include "bm_config.h"
 #include <stdio.h>
-#include "bm_common.h"
 #include "firmware_core_kernel.h"
 #include "atomic_dma_gen_cmd.h"
 #include "atomic_tensor_arithmetic_gen_cmd.h"
