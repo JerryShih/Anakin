@@ -154,7 +154,7 @@ static int INLINE addr_EU_align(int addr){
   return ALIGN( addr, EU_NUM ) * FLOAT_SIZE;
 }
 
-static INLINE int get_align_tensor_size(bm_tensor_4d_t shape){
+static int get_align_tensor_size(bm_tensor_4d_t shape){
   int c_per_npu = ceiling_func_shift(shape.c, NPU_SHIFT);
   return shape.n * c_per_npu * get_neuron_csize_local(shape.h, shape.w);
 }
