@@ -32,8 +32,8 @@ int bm_conv_fwd_test(bm_api_conv_forward conv_param)
     if (bm_res != BM_ATOMIC_SUCCESS) {
         printf("bm_atomic_wait_all_task_complete failed.\n");
         return -1;
-    }
-    return 0;*/
+    }*/
+    return 0;
 }
 
 int bmkernel_func(void *args)
