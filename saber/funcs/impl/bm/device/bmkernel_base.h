@@ -9,6 +9,31 @@ enum BmOpType {
     CONV
 };
 
+typedef struct kernel_param{
+    int g;
+    int oc;
+    int ic;
+    int h;
+    int w;
+} bm_kernel_param_t;
+
+typedef struct bm_conv_param{
+    int stride_h;
+    int stride_w;
+    int pad_h;
+    int pad_w;
+    int dilation_h;
+    int dilation_w;
+    bool result_add;
+} bm_conv_param_t;
+
+typedef struct conv_secs_info{
+    int ocsecs;
+    int icsecs;
+    int nsecs;
+    int hsecs;
+} conv_secs_info_t;
+
 typedef struct {
     unsigned long long             src_offset_global;
     unsigned long long             dst_offset_global;
