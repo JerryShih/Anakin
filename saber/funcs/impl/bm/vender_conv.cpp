@@ -1,6 +1,7 @@
 
 #include "saber/funcs/impl/bm/vender_conv.h"
 #include "bmkernel_base.h"
+#include "bm_common.h"
 #include "tensor_op.h"
 #include <string.h>
 #include <stdio.h>
@@ -10,32 +11,6 @@ namespace anakin
 {
 namespace saber
 {
-
-typedef struct kernel_param{
-    int g;
-    int oc;
-    int ic;
-    int h;
-    int w;
-} bm_kernel_param_t;
-
-typedef struct bm_conv_param{
-    int stride_h;
-    int stride_w;
-    int pad_h;
-    int pad_w;
-    int dilation_h;
-    int dilation_w;
-    bool result_add;
-} bm_conv_param_t;
-
-typedef struct conv_secs_info{
-    int ocsecs;
-    int icsecs;
-    int nsecs;
-    int hsecs;
-} conv_secs_info_t;
-
 void conv_splitc(bm_kernel_param_t kernel_param, conv_secs_info_t *secs_info){
   int oc_per_NPU = ceiling_func_shift(kernel_param.oc, NPU_SHIFT);
   int kernel_size = kernel_param.h * kernel_param.w * FLOAT_SIZE;
