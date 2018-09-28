@@ -11,6 +11,7 @@
 #include <time.h>
 #include "bm_config.h"
 #include "bm_memmap.h"
+#include "op_code.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
