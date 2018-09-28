@@ -1,6 +1,6 @@
 
 #include "saber/funcs/impl/bm/vender_conv.h"
-#include "bmkernel_base.h"
+#include "bmlib_runtime.h"
 #include "bm_common.h"
 #include "tensor_op.h"
 #include <string.h>
@@ -263,7 +263,7 @@ SaberStatus VenderConv2D<BM, AK_FLOAT>::\
     };
 
     //bm_handle_t handle = NULL;
-    //bmkernel_init(&handle);
+    //bmlib_kernel_init(&handle);
 
     bm_status_t bm_stat = bmkernel_launch(_handle, "/usr/local/include/bm/bmkernel_bin.bin");
     CHECK_EQ(BM_SUCCESS, bm_stat) << "bmkernel_launch failed.";
