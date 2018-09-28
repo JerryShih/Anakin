@@ -1,4 +1,5 @@
 #include "bmkernel_base.h"
+#include "bm_common.h"
 #include "bm_config.h"
 #include <stdio.h>
 #include "firmware_core_kernel.h"
